@@ -11,7 +11,6 @@ db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
 
-    # Строка подключения собирается из переменных окружения
     db_user = os.environ.get("POSTGRES_USER", "app")
     db_password = os.environ.get("POSTGRES_PASSWORD", "changeme")
     db_host = os.environ.get("POSTGRES_HOST", "localhost")
@@ -25,7 +24,7 @@ def create_app():
 
     db.init_app(app)
 
-    from app.models import Visit  # noqa: F401
+    from app.models import Visit 
     from app.routes import main_bp
     app.register_blueprint(main_bp)
 
